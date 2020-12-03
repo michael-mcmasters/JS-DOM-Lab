@@ -3,6 +3,11 @@
   justify-content: center;
 }
 
+/* For mx-auto to center a div, the div must have a width. Use this class in that case. */
+.w-fit-content {
+  width: fit-content;
+}
+
 body {
   background-color: seagreen;
 }
