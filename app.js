@@ -56,10 +56,10 @@ function calculate() {
 }
 
 function updateTemperatureDisplays(fara, celsius, kelvin, rankine) {
-  document.getElementById("fahrenheit-num").innerText = fara + " F";
-  document.getElementById("celsius-num").innerText = celsius + " C";
-  document.getElementById("kelvin-num").innerText = kelvin + " K";
-  document.getElementById("rankine-num").innerText = rankine + " R";
+  document.getElementById("fahrenheit-num").innerText = fara.toFixed(2) + " F";
+  document.getElementById("celsius-num").innerText = celsius.toFixed(2) + " C";
+  document.getElementById("kelvin-num").innerText = kelvin.toFixed(2) + " K";
+  document.getElementById("rankine-num").innerText = rankine.toFixed(2) + " R";
 }
 
 function convertToFahrenheit(convertFrom, d) {
