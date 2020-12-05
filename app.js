@@ -3,17 +3,26 @@ const dropDown = document.getElementById("dropdownMenu2");
 const dropDownItems = document.getElementsByClassName("dropdown-item");
 
 // Object for spelling and to ensure there is always a space after. This makes the arrow look nicer in the dropdown menu.
-let Temperatures = {
+const Temperatures = {
   Fahraenheit: "Fahrenheit ",
   Celsius: "Celsius ",
   Kelvin: "Kelvin ",
   Rankine: "Rankine ",
 }
 
+// Give each drop down item an event listener. When clicked, they will update the main text of the dropdown.
+for (let i = 0; i < dropDownItems.length; i++) {
+  dropDownItems[i].addEventListener("click", (event) => {
+    setDropDownText(event.target.innerText);
+  })
+}
+
+// Calculate button.
 button.addEventListener("click", () => {
   calculate();
 });
 
+// Allows keyboard shortcuts to quickly change the current dropdown option. Or to calculate.
 document.body.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     calculate();
@@ -28,11 +37,7 @@ document.body.addEventListener("keypress", (event) => {
   }
 });
 
-for (let i = 0; i < dropDownItems.length; i++) {
-  dropDownItems[i].addEventListener("click", (event) => {
-    setDropDownText(event.target.innerText);
-  })
-}
+
 
 
 
