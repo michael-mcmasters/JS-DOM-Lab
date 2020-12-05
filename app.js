@@ -20,12 +20,20 @@ button.addEventListener("click", () => {
 document.body.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     calculate();
+  } else if (event.key === "F" || event.key === "f") {
+    setDropDownText(Temperatures.Fahraenheit);
+  } else if (event.key === "C" || event.key === "c") {
+    setDropDownText(Temperatures.Celsius);
+  } else if (event.key === "K" || event.key === "k") {
+    setDropDownText(Temperatures.Kelvin);
+  } else if (event.key === "R" || event.key === "r") {
+    setDropDownText(Temperatures.Rankine);
   }
 });
 
 for (let i = 0; i < dropDownItems.length; i++) {
   dropDownItems[i].addEventListener("click", (event) => {
-    setDropDown(event.target);
+    setDropDownText(event.target.innerText);
   })
 }
 
@@ -42,7 +50,7 @@ function calculate() {
   const kelvin = convertToKelvin(convertFrom, degrees);
   const rankine = convertToRankine(convertFrom, degrees);
 
-  updateTempDisplays(fara, celsius, kelvin, rankine);
+  updateTemperatureDisplays(fara, celsius, kelvin, rankine);
 }
 
 function convertToFahrenheit(convertFrom, d) {
@@ -97,13 +105,13 @@ function convertToRankine(convertFrom, d) {
   console.error("Could not find conversion");
 }
 
-function updateTempDisplays(fara, celsius, kelvin, rankine) {
-  document.getElementById("fahrenheit-num").innerText = fara;
-  document.getElementById("celsius-num").innerText = celsius;
-  document.getElementById("kelvin-num").innerText = kelvin;
-  document.getElementById("rankine-num").innerText = rankine;
+function updateTemperatureDisplays(fara, celsius, kelvin, rankine) {
+  document.getElementById("fahrenheit-num").innerText = fara + " F";
+  document.getElementById("celsius-num").innerText = celsius + " C";
+  document.getElementById("kelvin-num").innerText = kelvin + " K";
+  document.getElementById("rankine-num").innerText = rankine + " R";
 }
 
-function setDropDown(selectedItem) {
-  dropDown.innerText = selectedItem.innerText;
+function setDropDownText(dropDownOption) {
+  dropDown.innerText = dropDownOption;
 }
