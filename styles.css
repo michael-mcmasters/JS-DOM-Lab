@@ -17,7 +17,15 @@
 }
 
 body {
-  background-color: seagreen;
+  background-color: #66c992;
+}
+
+.bg-color {
+  background-color: #41b675;
+}
+
+.border {
+  border-radius: 3rem;
 }
 
 @media (max-width: 775px) {
