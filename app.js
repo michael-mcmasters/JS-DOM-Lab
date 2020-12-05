@@ -24,7 +24,6 @@ document.body.addEventListener("keypress", (event) => {
 
 for (let i = 0; i < dropDownItems.length; i++) {
   dropDownItems[i].addEventListener("click", (event) => {
-    //console.log(event.target);
     setDropDown(event.target);
   })
 }
@@ -35,18 +34,24 @@ for (let i = 0; i < dropDownItems.length; i++) {
 function calculate() {
   const valueElement = document.getElementById("value");
   const convertFrom = dropDown.innerText.trim();
-  const celcius = convertToFahrenheit(convertFrom, valueElement.value);
-  updateTempDisplays(celcius);
+  
+  const fara = convertToFahrenheit(convertFrom, valueElement.value);
+  const celsius = convertToCelsius(convertFrom, valueElement.value);
+  const kelvin = convertToKelvin(convertFrom, valueElement.value);
+  const rankine = convertToRankine(convertFrom, valueElement.value);
+  
+  updateTempDisplays(fara, celsius, kelvin, rankine);
 }
-//return (degrees - 32) * 5 / 9;
 
-function convertToFahrenheit(convertFrom, degrees) {
-  if (convertFrom === Temperatures.Celsius) {
-      return (degrees - 32) / 1.8;
+function convertToFahrenheit(convertFrom, d) {
+  if (convertFrom === Temperatures.Fahraenheit)
+    return d;
+  else if (convertFrom === Temperatures.Celsius) {
+      return d * 1.8 + 32;
   } else if (convertFrom === Temperatures.Kelvin) {
-      return ((degrees - 32) / 1.8) + 273.15;
+      return d * 1.8 - 459.67;
   } else if (convertFrom === Temperatures.Rankine) {
-    return -1;
+    return d - 459.67;
   }
   console.error("Could not find conversion");
 }
@@ -65,9 +70,9 @@ function convertToRankine() {
 
 function updateTempDisplays(fara, celsius, kelvin, rankine) {
   document.getElementById("fahrenheit-num").innerText = fara;
-  document.getElementById("celsius-num").innerText = fara;
-  document.getElementById("kelvin-num").innerText = fara;
-  document.getElementById("rankine-num").innerText = fara;
+  document.getElementById("celsius-num").innerText = celsius;
+  document.getElementById("kelvin-num").innerText = kelvin;
+  document.getElementById("rankine-num").innerText = rankine;
 }
 
 function setDropDown(selectedItem) {
