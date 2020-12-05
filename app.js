@@ -5,6 +5,11 @@ button.addEventListener("click", () => {
   setValue(celcius);
 });
 
+document.body.addEventListener("keypress", (event) => {
+  if (event.key === "Enter")
+    console.log("ayyoo");
+});
+
 const dropDownItems = document.getElementsByClassName("dropdown-item");
 for (let i = 0; i < dropDownItems.length; i++) {
   dropDownItems[i].addEventListener("click", (event) => {
