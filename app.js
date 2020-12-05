@@ -51,6 +51,8 @@ function calculate() {
   const userInputElement = document.getElementById("value");
   const convertFrom = dropDown.innerText;
   const degrees = parseFloat(userInputElement.value);
+  if (isNaN(degrees))
+    return;
 
   const fara = convertToFahrenheit(convertFrom, degrees);
   const celsius = convertToCelsius(convertFrom, degrees);
