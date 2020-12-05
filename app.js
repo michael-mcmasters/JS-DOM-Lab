@@ -10,10 +10,6 @@ let Temperatures = {
   Rankine: "Rankine ",
 }
 
-
-
-
-
 button.addEventListener("click", () => {
   calculate();
 });
@@ -41,10 +37,15 @@ for (let i = 0; i < dropDownItems.length; i++) {
 
 
 
+
+function setDropDownText(dropDownOption) {
+  dropDown.innerText = dropDownOption;
+}
+
 function calculate() {
-  const valueElement = document.getElementById("value");
+  const valueInputElement = document.getElementById("value");
   const convertFrom = dropDown.innerText;
-  const degrees = parseFloat(valueElement.value);
+  const degrees = parseFloat(valueInputElement.value);
 
   const fara = convertToFahrenheit(convertFrom, degrees);
   const celsius = convertToCelsius(convertFrom, degrees);
@@ -52,6 +53,13 @@ function calculate() {
   const rankine = convertToRankine(convertFrom, degrees);
 
   updateTemperatureDisplays(fara, celsius, kelvin, rankine);
+}
+
+function updateTemperatureDisplays(fara, celsius, kelvin, rankine) {
+  document.getElementById("fahrenheit-num").innerText = fara + " F";
+  document.getElementById("celsius-num").innerText = celsius + " C";
+  document.getElementById("kelvin-num").innerText = kelvin + " K";
+  document.getElementById("rankine-num").innerText = rankine + " R";
 }
 
 function convertToFahrenheit(convertFrom, d) {
@@ -104,15 +112,4 @@ function convertToRankine(convertFrom, d) {
     return d;
   }
   console.error("Could not find conversion");
-}
-
-function updateTemperatureDisplays(fara, celsius, kelvin, rankine) {
-  document.getElementById("fahrenheit-num").innerText = fara + " F";
-  document.getElementById("celsius-num").innerText = celsius + " C";
-  document.getElementById("kelvin-num").innerText = kelvin + " K";
-  document.getElementById("rankine-num").innerText = rankine + " R";
-}
-
-function setDropDownText(dropDownOption) {
-  dropDown.innerText = dropDownOption;
 }
