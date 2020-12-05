@@ -11,3 +11,9 @@
 body {
   background-color: seagreen;
 }
+
+@media (max-width: 775px) {
+  .container {
+    min-width: 700px;
+  }
+}
