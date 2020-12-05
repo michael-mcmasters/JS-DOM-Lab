@@ -1,6 +1,6 @@
-let Temperature = {
+let Temperatures = {
   Fahraenheit: "Fahrenheit",
-  Celcius: "Celcius",
+  Celsius: "Celsius",
   Kelvin: "Kelvin",
   Rankine: "Rankine",
 }
@@ -24,7 +24,8 @@ document.body.addEventListener("keypress", (event) => {
 
 for (let i = 0; i < dropDownItems.length; i++) {
   dropDownItems[i].addEventListener("click", (event) => {
-    console.log(event.target);
+    //console.log(event.target);
+    setDropDown(event.target);
   })
 }
 
@@ -35,21 +36,18 @@ function calculate() {
   const valueElement = document.getElementById("value");
   const convertFrom = dropDown.innerText.trim();
   const celcius = convertToFahrenheit(convertFrom, valueElement.value);
-  setValue(celcius);
+  updateTempDisplays(celcius);
 }
 
 function convertToFahrenheit(temperature, value) {
-  if (temperature === Temperature.Fahraenheit) {
-    return (value - 32) * 5/9;
-  } else if (temperature === Temperature.Celcius) {
-    
-  } else if (temperature === Temperature.Kelvin) {
-    
-  } else if (temperature === Temperature.Rankine) {
-    
-  } else {
-    console.error("Could not find conversion");
+  if (temperature === Temperatures.Celsius) {
+      return (value - 32) * 5 / 9;
+  } else if (temperature === Temperatures.Kelvin) {
+      return (value - 32) / 1.8;
+  } else if (temperature === Temperatures.Rankine) {
+    return -1;
   }
+  console.error("Could not find conversion");
 }
 
 function convertToCelsius() {
@@ -64,10 +62,10 @@ function convertToRankine() {
   
 }
 
-function setValue(celcius) {
+function updateTempDisplays(celcius) {
   console.log(celcius);
 }
 
-function setDropDown() {
-  dropDown.innerText = "Fahraenheit";
+function setDropDown(selectedItem) {
+  dropDown.innerText = selectedItem.innerText;
 }
