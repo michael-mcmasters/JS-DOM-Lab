@@ -57,7 +57,6 @@ function convertToFahrenheit(convertFrom, d) {
   console.error("Could not find conversion");
 }
 
-// From x to Celsius
 function convertToCelsius(convertFrom, d) {
   if (convertFrom === Temperatures.Fahraenheit) {
     return (d - 32) / 1.8;
@@ -71,8 +70,18 @@ function convertToCelsius(convertFrom, d) {
   console.error("Could not find conversion");
 }
 
-function convertToKelvin() {
-
+// From x to kelvin
+function convertToKelvin(convertFrom, d) {
+  if (convertFrom === Temperatures.Fahraenheit) {
+    return (d + 459.67) / 1.8;
+  } else if (convertFrom === Temperatures.Celsius) {
+    return d + 273.15;
+  } else if (convertFrom === Temperatures.Kelvin) {
+    return d;
+  } else if (convertFrom === Temperatures.Rankine) {
+    return d / 1.8;
+  }
+  console.error("Could not find conversion");
 }
 
 function convertToRankine() {
