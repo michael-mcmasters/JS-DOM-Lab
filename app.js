@@ -38,13 +38,14 @@ function calculate() {
   const celcius = convertToFahrenheit(convertFrom, valueElement.value);
   updateTempDisplays(celcius);
 }
+//return (degrees - 32) * 5 / 9;
 
-function convertToFahrenheit(temperature, value) {
-  if (temperature === Temperatures.Celsius) {
-      return (value - 32) * 5 / 9;
-  } else if (temperature === Temperatures.Kelvin) {
-      return (value - 32) / 1.8;
-  } else if (temperature === Temperatures.Rankine) {
+function convertToFahrenheit(convertFrom, degrees) {
+  if (convertFrom === Temperatures.Celsius) {
+      return (degrees - 32) / 1.8;
+  } else if (convertFrom === Temperatures.Kelvin) {
+      return ((degrees - 32) / 1.8) + 273.15;
+  } else if (convertFrom === Temperatures.Rankine) {
     return -1;
   }
   console.error("Could not find conversion");
@@ -62,8 +63,11 @@ function convertToRankine() {
   
 }
 
-function updateTempDisplays(celcius) {
-  console.log(celcius);
+function updateTempDisplays(fara, celsius, kelvin, rankine) {
+  document.getElementById("fahrenheit-num").innerText = fara;
+  document.getElementById("celsius-num").innerText = fara;
+  document.getElementById("kelvin-num").innerText = fara;
+  document.getElementById("rankine-num").innerText = fara;
 }
 
 function setDropDown(selectedItem) {
