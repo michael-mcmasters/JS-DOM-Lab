@@ -53,16 +53,17 @@ function calculate() {
   const userInputElement = document.getElementById("value");
   const convertFrom = dropDown.innerText;
   const degrees = parseFloat(userInputElement.value);
-
-  // Only calculate if user inputted a number.
-  if (!isNaN(degrees)) {
-    const fara = convertToFahrenheit(convertFrom, degrees);
-    const celsius = convertToCelsius(convertFrom, degrees);
-    const kelvin = convertToKelvin(convertFrom, degrees);
-    const rankine = convertToRankine(convertFrom, degrees);
-
-    updateTemperatureDisplays(fara, celsius, kelvin, rankine);
+  if (isNaN(degrees)) {
+    alert("That is not a number");
+    return;
   }
+
+  const fara = convertToFahrenheit(convertFrom, degrees);
+  const celsius = convertToCelsius(convertFrom, degrees);
+  const kelvin = convertToKelvin(convertFrom, degrees);
+  const rankine = convertToRankine(convertFrom, degrees);
+
+  updateTemperatureDisplays(fara, celsius, kelvin, rankine);
 }
 
 function updateTemperatureDisplays(fara, celsius, kelvin, rankine) {
