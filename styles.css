@@ -8,16 +8,16 @@
   width: fit-content;
 }
 
-body {
-  background-color: seagreen;
-}
-
 .input-width {
   width: 12rem;
 }
 
 .input-padding {
   padding: 0.15rem 0;
+}
+
+body {
+  background-color: seagreen;
 }
 
 @media (max-width: 775px) {
