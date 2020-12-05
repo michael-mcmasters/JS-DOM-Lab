@@ -44,13 +44,13 @@ document.body.addEventListener("keypress", (event) => {
 
 
 function setDropDownText(dropDownOption) {
-  dropDown.innerText = dropDownOption;
+  dropDown.innerText = dropDownOption + " ";
 }
 
 function calculate() {
-  const valueInputElement = document.getElementById("value");
+  const userInputElement = document.getElementById("value");
   const convertFrom = dropDown.innerText;
-  const degrees = parseFloat(valueInputElement.value);
+  const degrees = parseFloat(userInputElement.value);
 
   const fara = convertToFahrenheit(convertFrom, degrees);
   const celsius = convertToCelsius(convertFrom, degrees);
