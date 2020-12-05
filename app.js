@@ -2,11 +2,12 @@ const button = document.getElementById("calculate-btn");
 const dropDown = document.getElementById("dropdownMenu2");
 const dropDownItems = document.getElementsByClassName("dropdown-item");
 
+// Object for spelling and to ensure there is always a space after. This makes the arrow look nicer in the dropdown menu.
 let Temperatures = {
-  Fahraenheit: "Fahrenheit",
-  Celsius: "Celsius",
-  Kelvin: "Kelvin",
-  Rankine: "Rankine",
+  Fahraenheit: "Fahrenheit ",
+  Celsius: "Celsius ",
+  Kelvin: "Kelvin ",
+  Rankine: "Rankine ",
 }
 
 
@@ -42,7 +43,7 @@ for (let i = 0; i < dropDownItems.length; i++) {
 
 function calculate() {
   const valueElement = document.getElementById("value");
-  const convertFrom = dropDown.innerText.trim();
+  const convertFrom = dropDown.innerText;
   const degrees = parseFloat(valueElement.value);
 
   const fara = convertToFahrenheit(convertFrom, degrees);
