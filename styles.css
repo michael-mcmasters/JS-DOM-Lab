@@ -12,6 +12,11 @@ body {
   background-color: seagreen;
 }
 
+#calculate-btn {
+  width: 12rem;
+  padding: 0.15rem 0;
+}
+
 @media (max-width: 775px) {
   .container {
     min-width: 700px;
