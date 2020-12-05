@@ -35,11 +35,12 @@ for (let i = 0; i < dropDownItems.length; i++) {
 function calculate() {
   const valueElement = document.getElementById("value");
   const convertFrom = dropDown.innerText.trim();
+  const degrees = parseFloat(valueElement.value);
 
-  const fara = convertToFahrenheit(convertFrom, valueElement.value);
-  const celsius = convertToCelsius(convertFrom, valueElement.value);
-  const kelvin = convertToKelvin(convertFrom, valueElement.value);
-  const rankine = convertToRankine(convertFrom, valueElement.value);
+  const fara = convertToFahrenheit(convertFrom, degrees);
+  const celsius = convertToCelsius(convertFrom, degrees);
+  const kelvin = convertToKelvin(convertFrom, degrees);
+  const rankine = convertToRankine(convertFrom, degrees);
 
   updateTempDisplays(fara, celsius, kelvin, rankine);
 }
