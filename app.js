@@ -1,3 +1,7 @@
+const button = document.getElementById("calculate-btn");
+const dropDown = document.getElementById("dropdownMenu2");
+const dropDownItems = document.getElementsByClassName("dropdown-item");
+
 let Temperatures = {
   Fahraenheit: "Fahrenheit",
   Celsius: "Celsius",
@@ -5,9 +9,6 @@ let Temperatures = {
   Rankine: "Rankine",
 }
 
-const button = document.getElementById("calculate-btn");
-const dropDown = document.getElementById("dropdownMenu2");
-const dropDownItems = document.getElementsByClassName("dropdown-item");
 
 
 
@@ -34,38 +35,48 @@ for (let i = 0; i < dropDownItems.length; i++) {
 function calculate() {
   const valueElement = document.getElementById("value");
   const convertFrom = dropDown.innerText.trim();
-  
+
   const fara = convertToFahrenheit(convertFrom, valueElement.value);
   const celsius = convertToCelsius(convertFrom, valueElement.value);
   const kelvin = convertToKelvin(convertFrom, valueElement.value);
   const rankine = convertToRankine(convertFrom, valueElement.value);
-  
+
   updateTempDisplays(fara, celsius, kelvin, rankine);
 }
 
 function convertToFahrenheit(convertFrom, d) {
-  if (convertFrom === Temperatures.Fahraenheit)
+  if (convertFrom === Temperatures.Fahraenheit) {
     return d;
-  else if (convertFrom === Temperatures.Celsius) {
-      return d * 1.8 + 32;
+  } else if (convertFrom === Temperatures.Celsius) {
+    return d * 1.8 + 32;
   } else if (convertFrom === Temperatures.Kelvin) {
-      return d * 1.8 - 459.67;
+    return d * 1.8 - 459.67;
   } else if (convertFrom === Temperatures.Rankine) {
     return d - 459.67;
   }
   console.error("Could not find conversion");
 }
 
-function convertToCelsius() {
-  
+// From x to Celsius
+function convertToCelsius(convertFrom, d) {
+  if (convertFrom === Temperatures.Fahraenheit) {
+    return (d - 32) / 1.8;
+  } else if (convertFrom === Temperatures.Celsius) {
+    return d;
+  } else if (convertFrom === Temperatures.Kelvin) {
+    return d - 273.15;
+  } else if (convertFrom === Temperatures.Rankine) {
+    return (d - 32 - 459.67) / 1.8;
+  }
+  console.error("Could not find conversion");
 }
 
 function convertToKelvin() {
-  
+
 }
 
 function convertToRankine() {
-  
+
 }
 
 function updateTempDisplays(fara, celsius, kelvin, rankine) {
