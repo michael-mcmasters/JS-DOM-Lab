@@ -1,13 +1,16 @@
+let Temperature = {
+  Fahraenheit: "Fahrenheit",
+  Celcius: "Celcius",
+  Kelvin: "Kelvin",
+  Rankine: "Rankine",
+}
+
 const button = document.getElementById("calculate-btn");
+const dropDown = document.getElementById("dropdownMenu2");
 const dropDownItems = document.getElementsByClassName("dropdown-item");
 
-// Enum
-let Temperature = {
-  Fahraenheit: 1,
-  Celcius: 2,
-  Kelvin: 3,
-  Rankine: 4,
-}
+
+
 
 button.addEventListener("click", () => {
   calculate();
@@ -30,15 +33,23 @@ for (let i = 0; i < dropDownItems.length; i++) {
 
 function calculate() {
   const valueElement = document.getElementById("value");
-  const celcius = convertToFahrenheit(Temperature.Fahraenheit, valueElement.value);
+  const convertFrom = dropDown.innerText.trim();
+  const celcius = convertToFahrenheit(convertFrom, valueElement.value);
   setValue(celcius);
 }
 
 function convertToFahrenheit(temperature, value) {
   if (temperature === Temperature.Fahraenheit) {
     return (value - 32) * 5/9;
+  } else if (temperature === Temperature.Celcius) {
+    
+  } else if (temperature === Temperature.Kelvin) {
+    
+  } else if (temperature === Temperature.Rankine) {
+    
+  } else {
+    console.error("Could not find conversion");
   }
-  console.log(Temperature);
 }
 
 function convertToCelsius() {
@@ -58,6 +69,5 @@ function setValue(celcius) {
 }
 
 function setDropDown() {
-  const dropDownMenu = document.getElementById("dropdownMenu2");
-  dropDownMenu.innerText = "Fahraenheit";
+  dropDown.innerText = "Fahraenheit";
 }
