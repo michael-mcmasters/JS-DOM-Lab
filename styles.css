@@ -28,8 +28,9 @@ body {
   background-color: #41b675;
 }
 
-.border {
+.rounded-border {
   border-radius: 3rem;
+  border-style: none;
 }
 
 @media (max-width: 775px) {
